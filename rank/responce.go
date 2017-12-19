@@ -19,7 +19,7 @@ func ResponseRank(w http.ResponseWriter, r *http.Request) {
 		if p := recover(); p != nil {
 			result, _ := CreateResponce("444", fmt.Sprintf("%v", p))
 			fmt.Fprintf(w, "%s", result)
-			log.Printf("main : ResponseRank : error=[%v]", p)
+			log.Printf("ResponseRank : error=[%v]", p)
 		}
 	}()
 	kv, err := spliteRankUrlArguments(r.URL.Query())
