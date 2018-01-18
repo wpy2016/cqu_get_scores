@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	HOST_URL        = "localhost:9296"
+	HOST_URL        = "0.0.0.0:8000"
 	SCORES          = "/scores/"
 	RANK_NEW_SCORES = "/rank/new_scores/"
 	RANK_ALL_SCORES = "/rank/all_scores/"
