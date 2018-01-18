@@ -6,8 +6,6 @@ import (
 	"net/http"
 	"log"
 	"net/url"
-	"zhihui/config"
-	"cqu/server"
 )
 
 const (
@@ -18,7 +16,7 @@ const (
 )
 
 func ResponseScores(w http.ResponseWriter, r *http.Request) {
-	server.AddHeader(w)
+	AddHeader(w)
 	defer func() {
 		if p := recover(); p != nil {
 			result, _ := CreateErrorResponce("444", fmt.Sprintf("%v", p))
@@ -46,6 +44,12 @@ func ResponseScores(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	fmt.Fprintf(w, "%s", result)
+}
+
+func AddHeader(w http.ResponseWriter)  {
+	w.Header().Add("Access-Control-Allow-Origin", "http://cdqn.ccj.cqu.edu.cn")
+	w.Header().Add("Access-Control-Allow-Credentials", "true")
+	w.Header().Add("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers")
 }
 
 func spliteScoresUrlArguments(value url.Values) (map[string]string, error) {

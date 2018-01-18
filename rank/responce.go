@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
-	"cqu/server"
+	"cqu/score"
 )
 
 const (
@@ -14,7 +14,7 @@ const (
 )
 
 func ResponseRank(w http.ResponseWriter, r *http.Request) {
-	server.AddHeader(w)
+	score.AddHeader(w)
 	defer func() {
 		if p := recover(); p != nil {
 			result, _ := CreateResponce("444", fmt.Sprintf("%v", p))
