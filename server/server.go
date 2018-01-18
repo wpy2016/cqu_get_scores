@@ -20,3 +20,9 @@ func StartServer() {
 	http.HandleFunc(RANK_ALL_SCORES, rank.ResponseRank)
 	log.Fatal(http.ListenAndServe(HOST_URL, nil))
 }
+
+func AddHeader(w http.ResponseWriter)  {
+	w.Header().Add("Access-Control-Allow-Origin", "http://cdqn.ccj.cqu.edu.cn")
+	w.Header().Add("Access-Control-Allow-Credentials", "true")
+	w.Header().Add("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers")
+}

@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"log"
 	"net/url"
+	"zhihui/config"
+	"cqu/server"
 )
 
 const (
@@ -16,8 +18,7 @@ const (
 )
 
 func ResponseScores(w http.ResponseWriter, r *http.Request) {
-	w.Header().Add("Access-Control-Allow-Origin", "*")
-	w.Header().Add("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers")
+	server.AddHeader(w)
 	defer func() {
 		if p := recover(); p != nil {
 			result, _ := CreateErrorResponce("444", fmt.Sprintf("%v", p))

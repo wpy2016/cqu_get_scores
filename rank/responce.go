@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"cqu/server"
 )
 
 const (
@@ -13,8 +14,7 @@ const (
 )
 
 func ResponseRank(w http.ResponseWriter, r *http.Request) {
-	w.Header().Add("Access-Control-Allow-Origin", "*")
-	w.Header().Add("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers")
+	server.AddHeader(w)
 	defer func() {
 		if p := recover(); p != nil {
 			result, _ := CreateResponce("444", fmt.Sprintf("%v", p))
